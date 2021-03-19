@@ -8,10 +8,7 @@ const router = Router();
 
 import controller from "../../controller/v1/user.controller";
 
-router
-
-.post('/', controller.addUsers)
-.get('/', controller.getUsers);
+router.post('/', controller.addUsers)
 
 module.exports = router;
 

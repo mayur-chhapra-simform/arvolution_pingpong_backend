@@ -8,7 +8,7 @@ import "dotenv/config";
 
 // Routes
 import routes from './routes'
-import "./config/db";
+import db from "./config/db";
 import cors from "cors";
 
 const app = express();
@@ -22,8 +22,15 @@ app.use(cors());
 // Configure Routes
 routes(app)
 
+db.once("open", () => {
+    console.log("DB Connected.");
+    app.listen( PORT, () => {
+        console.log( `server started at http://localhost:${ PORT }` );
+    } );
+
+    app.emit( "app_started" )
+});
+
 // Start Server
-app.listen( PORT, () => {
-    // tslint:disable-next-line:no-console
-    console.log( `server started at http://localhost:${ PORT }` );
-} );
+
+export default app

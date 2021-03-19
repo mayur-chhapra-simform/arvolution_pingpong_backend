@@ -19,16 +19,7 @@ const addUsers = async (req: any, res: any): Promise<any> => {
   }
 }
 
-const getUsers = async (req: any, res: any): Promise<any> => {
-  try {
-    const getData = await UserModel.find()
-    return res.json(serverSuccess(getData))
-  } catch (e) {
-    return res.json(serverError)
-  }
-}
 
 export default {
-  addUsers,
-  getUsers
+  addUsers
 }

@@ -9,7 +9,6 @@ const addScore = async (req: Request, res: Response): Promise<any> => {
   try {
 
     const {player_ids, score, game_id} = req.body
-
     // Prepare data for the bulk insert
     const rawData: any[] = []
     for (let i=0; i<player_ids.length; i++) {
@@ -26,23 +25,12 @@ const addScore = async (req: Request, res: Response): Promise<any> => {
     // Upsert
     await Promise.all(rawData);
     return res.json(serverSuccess({data: 'Saved...'}))
-    // return res.json(serverSuccess(req.body))
   } catch (e) {
     console.log(e)
     return res.json(serverError)
   }
 }
 
-const getScore = async (req: Request, res: Response): Promise<any> => {
-  try {
-    const getData = await ScoreModel.find()
-    return res.json(serverSuccess(getData))
-  } catch (e) {
-    return res.json(serverError)
-  }
-}
-
 export default {
-  addScore,
-  getScore
+  addScore
 }

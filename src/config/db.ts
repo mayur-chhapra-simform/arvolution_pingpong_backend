@@ -17,8 +17,8 @@
 
  db.on("error", console.error.bind(console, "Connection Error"));
 
- db.once("open", () => {
-   console.log("DB Connected.");
- });
+//  db.once("open", () => {
+//    console.log("DB Connected.");
+//  });
 
- module.exports = db;
+ export default db

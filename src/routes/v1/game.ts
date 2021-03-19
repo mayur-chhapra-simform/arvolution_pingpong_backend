@@ -8,10 +8,7 @@ const router = Router();
 
 import controller from "../../controller/v1/game.controller";
 
-router
-
-.post('/', controller.addGame)
-.get('/', controller.getGames)
+router.post('/', controller.addGame)
 
 module.exports = router;
 

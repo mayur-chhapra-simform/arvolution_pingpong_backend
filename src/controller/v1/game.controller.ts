@@ -16,16 +16,6 @@ const addGame = async (req: any, res: any): Promise<any> => {
   }
 }
 
-const getGames = async (req: any, res: any): Promise<any> => {
-  try {
-    const getData = await GameModel.find()
-    return res.json(serverSuccess(getData))
-  } catch (e) {
-    return res.json(serverError)
-  }
-}
-
 export default {
-  addGame,
-  getGames
+  addGame
 }

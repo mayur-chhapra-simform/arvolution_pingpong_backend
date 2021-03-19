@@ -14,18 +14,14 @@ import score from './v1/score'
  * @param controllers - Set of controller(s) along with specific routes
  */
 const defineRoute = (application: any, versionTag: string, controllers: any) => {
-  const versionPath = versionTag ? `/${versionTag}/` : `/`;
+  const versionPath = versionTag ? `/api/${versionTag}/` : `/`;
   for (const controller in controllers) {
     if (controllers.hasOwnProperty(controller)) {
       const path = versionPath + controller;
-      // tslint:disable-next-line:no-console
-      console.log("Routes: ", path);
       application.use(path, controllers[controller]);
     }
   }
 };
-
-
 
 /**
  * Route binding
