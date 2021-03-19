@@ -6,9 +6,9 @@ import { Router } from "express";
 
 const router = Router();
 
-import controller from "../../controller/v1/user.controller";
+import controller from "../../controller/v1/game.controller";
 
-router.post('/', controller.addUsers)
+router.post('/', controller.addGame)
 
 module.exports = router;
 

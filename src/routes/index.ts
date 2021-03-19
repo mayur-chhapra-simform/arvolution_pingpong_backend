@@ -2,7 +2,9 @@
 /**
  * Author: Mayur
  */
-import user from "./v1/user";
+import user from './v1/user'
+import game from './v1/game'
+import score from './v1/score'
 
 
 /**
@@ -12,19 +14,22 @@ import user from "./v1/user";
  * @param controllers - Set of controller(s) along with specific routes
  */
 const defineRoute = (application: any, versionTag: string, controllers: any) => {
-  const versionPath = versionTag ? `/${versionTag}/` : `/`;
+  const versionPath = versionTag ? `/api/${versionTag}/` : `/`;
   for (const controller in controllers) {
     if (controllers.hasOwnProperty(controller)) {
       const path = versionPath + controller;
-      // tslint:disable-next-line:no-console
-      console.log("Routes: ", path);
       application.use(path, controllers[controller]);
     }
   }
 };
 
+/**
+ * Route binding
+ */
 export default (app: any) => {
   defineRoute(app, "v1", {
     user,
+    game,
+    score
   });
 };
