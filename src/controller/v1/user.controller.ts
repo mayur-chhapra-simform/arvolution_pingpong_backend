@@ -1,11 +1,34 @@
-import db from '../../helpers/database.helper'
+/**
+ * Author: Mayur Chhapra
+ */
+import UserModel from '../../model/user.schema'
+import {serverError, serverSuccess} from '../../helpers/response.helper'
 
-const addUser = (req: any, res: any) => {
-  // tslint:disable-next-line:no-console
-  console.log(req.body)
-  return res.json(req.body)
+const addUsers = async (req: any, res: any): Promise<any> => {
+  try {
+    // Prepare input for bulk insert
+    const rawData: any[] = [
+      { name: req.body.player_1 },
+      { name: req.body.player_2 }]
+
+    const data = await UserModel.insertMany(rawData)
+    return res.json(serverSuccess(data))
+  } catch (e) {
+    console.log(e)
+    return res.json(serverError)
+  }
+}
+
+const getUsers = async (req: any, res: any): Promise<any> => {
+  try {
+    const getData = await UserModel.find()
+    return res.json(serverSuccess(getData))
+  } catch (e) {
+    return res.json(serverError)
+  }
 }
 
 export default {
-  addUser
+  addUsers,
+  getUsers
 }

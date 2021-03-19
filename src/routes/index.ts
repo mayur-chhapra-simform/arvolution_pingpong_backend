@@ -2,7 +2,9 @@
 /**
  * Author: Mayur
  */
-import user from "./v1/user";
+import user from './v1/user'
+import game from './v1/game'
+import score from './v1/score'
 
 
 /**
@@ -23,8 +25,15 @@ const defineRoute = (application: any, versionTag: string, controllers: any) => 
   }
 };
 
+
+
+/**
+ * Route binding
+ */
 export default (app: any) => {
   defineRoute(app, "v1", {
     user,
+    game,
+    score
   });
 };
