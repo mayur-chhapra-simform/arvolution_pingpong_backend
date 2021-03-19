@@ -1,0 +1,6 @@
+# TS Dist directory
+dist
+
+# Node modules
+node_modules
+
